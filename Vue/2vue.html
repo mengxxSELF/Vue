@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="./bootstrap.min.css"/>
+</head>
+<body class="container">
+<div id="app" class="col-md-5">
+    <input class="form-control" placeholder="enter question" autofocus type="text" v-model="msg"/>
+    <p  v-bind:class="{ 'btn' : ac}">{{msg}}</p>
+    <ul class="list-group">
+        <li class="list-group-item" v-for="item in todos">{{item}}</li>
+    </ul>
+    <button class="btn btn-info" v-on:click="adding">reserve</button>
+</div>
+
+<script src="./vue.min.js"></script>
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+            ac:true,
+            msg:'',
+            todos:['Number','string','boolean','null','undefiend']
+        },
+        methods:{
+            adding: function () {
+                window.open('http://www.webmxx.com',"width=500,height=400,resizable=no,
+                scrollbars=yes,status=yes,toolbar=yes,menubar=yes,location=no")
+            }
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="./bootstrap.min.css"/>
+</head>
+<body class="container">
+<div id="app" class="col-md-5">
+    <input class="form-control" placeholder="enter question" autofocus type="text" v-model="msg"/>
+    <p v-if="flag">{{msg}}</p>
+    <ul class="list-group">
+        <li class="list-group-item" v-for="item in todos">{{item.text}}</li>
+    </ul>
+    <button class="btn btn-info" v-on:click="reserving">reserve</button>
+
+    <div class="form-group">
+        <input class="form-control" v-modal="que" placeholder="enter question" autofocus type="text" />
+    </div>
+    <p>{{answer}}</p>
+
+</div>
+
+
+<script src="./vue.min.js"></script>
+<script>
+    var app = new Vue({
+        el:'#app',
+        data:{
+            msg:'',
+            flag:true,
+            todos: [
+                { text: 'Learn JavaScript' },
+                { text: 'Learn Vue.js' },
+                { text: 'Build Something Awesome' }
+            ],
+            que:'',
+            answer: 'I cannot give you an answer until you ask a question!'
+
+        },
+        watch:{
+            que: function (newQ) {
+                this.answer = 'wait';
+                this.getAnswer();
+            }
+        },
+        methods:{
+            reserving: function () {
+                console.log('click',this.msg);
+                this.flag = !this.flag;
+            },
+            getAnswer:function () {
+                var vm = this;
+                vm.answer = 'thinking'
+            }
+        }
+    })
+</script>
+
+</body>
+</html>
